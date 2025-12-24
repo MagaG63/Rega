@@ -15,13 +15,18 @@ function NavBar({ user, logoutHandler }) {
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <Navbar.Collapse id="basic-navbar-nav">
           <Nav className="me-auto">
-            <Nav.Link as={Link} to="/">Хата</Nav.Link>
+            <Nav.Link as={Link} to="/">Главная</Nav.Link>
             {!user ? (<>
             <Nav.Link as={Link} to="/rega">Регистрация</Nav.Link> <Nav.Link as={Link} to="/login">Вход</Nav.Link>
             </>) :
-              (<Nav.Link as={"button"} onClick={logoutHandler}>
+              ( <>
+                <Nav.Link as={"button"} onClick={logoutHandler}>
                   Выход
-                </Nav.Link>)}
+                </Nav.Link>
+                <Nav.Link as={Link} to="/add">Добавить</Nav.Link>
+              <Nav.Link as={Link} to="/my">Мое</Nav.Link>
+              </>   
+              )}
           </Nav>
         </Navbar.Collapse>
       </Container>

@@ -7,6 +7,8 @@ import axios from "axios";
 import axiosInstance, { setAccessToken } from "./api/axiosInstance";
 import ProtectedRoute from "./components/HOCs/ProtectedRoute";
 import LoginPage from "./components/pages/loginPage";
+import AddOrder from "./components/pages/AddOrder";
+import MyOrder from "./components/pages/MyOrder";
 
 function App() {
  const [user, setUser] = useState(null);
@@ -64,6 +66,24 @@ const loginHandler = async (e) => {
        <Routes>
     <Route element={<Layout user={user} logoutHandler={logoutHandler} />}>
       <Route path="/" element={<HomePage user={user} />} />
+
+   <Route
+        path="/my"
+        element={
+          <ProtectedRoute isAllowed={user} redirectTo="/">
+            <MyOrder user={user}/>
+          </ProtectedRoute>
+        }
+      />
+
+        <Route
+        path="/add"
+        element={
+          <ProtectedRoute isAllowed={user} redirectTo="/">
+            <AddOrder />
+          </ProtectedRoute>
+        }
+      />
       <Route
         path="/rega"
         element={
