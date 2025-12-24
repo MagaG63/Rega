@@ -34,9 +34,9 @@ export default function MyOrder({ user }) {
     <>
       <Row className="g-2">
         {orders
-          .filter((order) => order.userId === user?.id)
+          .filter((order) => order.userId === user.id)
           .map((order) => (
-            <Col key={order.id} sm={4}>
+            <Col sm={4}>
               <OrderCard
                 order={order}
                 user={user}

@@ -13,21 +13,6 @@ class OrdersController {
     return res.json(order)
   }
 
-  static async getOneOrder(req, res) {
-    const { id } = req.params;
-    const order = await OrderService.getById(id);
-
-    const { user } = res.locals;
-
-    if (order.userId !== user.id) {
-      return res.sendStatus(403);
-    }
-
-    if (!order) {
-      return res.sendStatus(404);
-    }
-    return res.json(order)
-  }
 
   static async createOrder(req, res) {
 
@@ -40,20 +25,8 @@ class OrdersController {
   }
 
   static async deleteOrder(req, res) {
-    const { user } = res.locals;
     const { id } = req.params;
 
-    const order = await OrderService.getById(id);
-
-    if (!order) {
-      return res.sendStatus(404);
-    }
-
-    console.log(order)
-
-    if (order.userId !== user.id) {
-      return res.sendStatus(403);
-    }
 
     await OrderService.delete(id);
     return res.sendStatus(204)

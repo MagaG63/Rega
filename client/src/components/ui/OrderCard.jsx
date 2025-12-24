@@ -11,7 +11,7 @@ export default function OrderCard({
 }) {
   return (
     <Card>
-      <Card.Body style={{height: "110px"}}>
+      <Card.Body>
         <Card.Title>{order.company}</Card.Title>
         <Card.Subtitle className="mb-2 text-muted">{order.phone}</Card.Subtitle>
         {user.id === order.userId ? (<Card.Subtitle className="mb-2 text-muted">Ваша карточка</Card.Subtitle>) : (<Card.Subtitle className="mb-2 text-muted">Не ваша карточка</Card.Subtitle>)}
